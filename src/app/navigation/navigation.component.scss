@@ -1,0 +1,31 @@
+nav{
+    padding: 0 350px;
+}
+
+.pointer li{
+    cursor: pointer;
+}
+
+.pointer li:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.plr-400{
+    padding: 0 400px;
+}
+.bg-orange{
+    background-color: #F27B1A;
+    color: white;
+}
+
+.bg-orange a{
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.bg-orange a:hover{
+    color: #5d5d5a;
+    background-color: #ffa45c;
+}

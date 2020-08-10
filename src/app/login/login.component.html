@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card mt-4 float-right shadow" style="width: 350px;">
+        <div class="card-body">
+            <h5 class="card-title">Login to Internet Banking</h5>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" #usrnm class="form-control shadow-sm" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" #psswd class="form-control shadow-sm" />
+            </div>
+            <button class="btn bg-orange" (click)="login(usrnm, psswd)">Login</button>
+        </div>
+    </div>
+</div>
