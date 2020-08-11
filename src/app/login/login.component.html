@@ -10,6 +10,9 @@
                 <label>Password</label>
                 <input type="password" #psswd class="form-control shadow-sm" />
             </div>
+            <div *ngIf="WrongPass" class="text-danger mb-3">
+                Invalid password
+            </div>
             <button class="btn bg-orange" (click)="login(usrnm, psswd)">Login</button>
         </div>
     </div>

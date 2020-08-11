@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  WrongPass: boolean;
   constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   login(username, password){
-    this.router.navigate(['/dashboard']);
-    console.log(username.value, password.value);
+    if(password.value != 'admin') {
+      this.WrongPass = true;
+      console.log(password.value);
+      
+      return;
+    }
+    this.router.navigate(['/dashboard', username.value]);
   }
 }

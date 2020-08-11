@@ -3,7 +3,7 @@
         <div class="col-3">
             <div class="row">
                 <div class="">
-                    <h5>Suresh Kumar</h5>
+                    <h5>{{Name}}</h5>
                 </div>
                 <div>
                     <div class="avatar float-left mr-4">
@@ -34,20 +34,23 @@
                         <option value="">Loan Account</option>
                     </select>
                 </div>
+                <div class="ml-3" style="margin-top: -10px;"><button class="btn bg-orange" (click)="showBalance()">View Balance</button></div>
             </div>
-            <div class="row bg-grey font-weight-bold p-2 pl-4 mt-2">
-                Total By Branch
-            </div>
-            <div class="row mt-2">
-                <div class="col p-0">
-                    <div class="text-center border p-2 bg-grey font-weight-bold">Total Assets</div>
-                    <div class="text-center border border-grey p-2">26,743</div>
+            <ng-container *ngIf="IsBalanceAvailable">
+                <div class="row bg-grey font-weight-bold p-2 pl-4 mt-2">
+                    Total By Branch
                 </div>
-                <div class="col p-0">
-                    <div class="text-center border p-2 bg-grey font-weight-bold">Total Liabilities</div>
-                    <div class="text-center border border-grey p-2">20,249</div>
+                <div class="row mt-2">
+                    <div class="col p-0">
+                        <div class="text-center border p-2 bg-grey font-weight-bold">Total Assets</div>
+                        <div class="text-center border border-grey p-2"><span *ngIf="Balance.Asset && Balance.Asset != 'Loading'">&#x20B9; </span>{{Balance.Asset}}</div>
+                    </div>
+                    <div class="col p-0">
+                        <div class="text-center border p-2 bg-grey font-weight-bold">Total Liabilities</div>
+                        <div class="text-center border border-grey p-2"><span *ngIf="Balance.Liability && Balance.Liability != 'Loading'">&#x20B9; </span>{{Balance.Liability}}</div>
+                    </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>
