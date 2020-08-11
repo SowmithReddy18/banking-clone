@@ -1,19 +1,13 @@
 <div class="container-fluid mt-3" style="padding: 0 200px;">
     <div class="row">
         <div class="col-3">
+            <div class="h5 row text-center">{{Name}}</div>
+            <div class="avatar text-center row">
+                <img src="../../assets/avatar.png" width="125px" height="125px" alt="">
+            </div>
             <div class="row">
-                <div class="">
-                    <h5>{{Name}}</h5>
-                </div>
-                <div>
-                    <div class="avatar float-left mr-4">
-                        <img src="../../assets/avatar.png" class="" alt="" style="width: 100px;">
-                    </div>
-                    <div class="float-right">
-                        <button class="btn bg-orange">Personal Details</button><br>
-                        <button class="btn bg-orange mt-2">Generate Card PIN</button>
-                    </div>
-                </div>
+                <button class="btn bg-orange mt-2 btn-sm">Personal Details</button><br>
+                <button class="btn bg-orange mt-2 btn-sm">Generate Card PIN</button>
             </div>
             <div class="row mt-3 mr-4">
                 <div class="card p-2 mt-1" style="width: 100%;">My View</div>
@@ -34,7 +28,9 @@
                         <option value="">Loan Account</option>
                     </select>
                 </div>
-                <div class="ml-3" style="margin-top: -10px;"><button class="btn bg-orange" (click)="showBalance()">View Balance</button></div>
+                <div class="ml-3" style="margin-top: -5px;"><button class="btn btn-sm bg-orange"
+                        (click)="showBalance()">View
+                        Balance</button></div>
             </div>
             <ng-container *ngIf="IsBalanceAvailable">
                 <div class="row bg-grey font-weight-bold p-2 pl-4 mt-2">
@@ -43,11 +39,37 @@
                 <div class="row mt-2">
                     <div class="col p-0">
                         <div class="text-center border p-2 bg-grey font-weight-bold">Total Assets</div>
-                        <div class="text-center border border-grey p-2"><span *ngIf="Balance.Asset && Balance.Asset != 'Loading'">&#x20B9; </span>{{Balance.Asset}}</div>
+                        <div class="text-center border border-grey p-2"><span
+                                *ngIf="Balance.Asset && Balance.Asset != 'Loading'">&#x20B9; </span>{{Balance.Asset}}
+                        </div>
                     </div>
                     <div class="col p-0">
                         <div class="text-center border p-2 bg-grey font-weight-bold">Total Liabilities</div>
-                        <div class="text-center border border-grey p-2"><span *ngIf="Balance.Liability && Balance.Liability != 'Loading'">&#x20B9; </span>{{Balance.Liability}}</div>
+                        <div class="text-center border border-grey p-2"><span
+                                *ngIf="Balance.Liability && Balance.Liability != 'Loading'">&#x20B9;
+                            </span>{{Balance.Liability}}</div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col p-0">
+                        <div class="text-center border p-2 bg-grey font-weight-bold">Acc Number</div>
+                        <div class="text-center border border-grey p-2">
+                            {{Balance.Asset}}
+                        </div>
+                    </div>
+                    <div class="col-8 p-0">
+                        <div class="text-center border p-2 bg-grey font-weight-bold">Branch Address</div>
+                        <div class="text-center border border-grey p-2">
+                            <div class="30">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col p-0">
+                        <div class="text-center border p-2 bg-grey font-weight-bold">IFSC Code</div>
+                        <div class="text-center border border-grey p-2">
+                            ICIC0003227
+                        </div>
                     </div>
                 </div>
             </ng-container>
