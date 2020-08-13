@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,16 +9,38 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   WrongPass: boolean;
-  constructor(private router:Router) { }
+  accnum;
+  accname;
+  accbal;
+  ledger;
+  available;
+  resesrved;
+  unclear;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login(username, password){
-    if(password.value != 'admin') {
+  login(username, password) {
+    if (password.value != 'admin') {
       this.WrongPass = true;
-      console.log(password.value);
-      
+      return;
+    }
+    if (this.accnum != null ||
+      this.ledger != null ||
+      this.available != null ||
+      this.resesrved != null ||
+      this.unclear != null) {
+      this.router.navigate(['/dashboard', username.value], {
+        queryParams: {
+          accNum: this.accnum,
+          accname: this.accname,
+          ledger: this.ledger,
+          available: this.available,
+          resesrved: this.resesrved,
+          unclear: this.unclear
+        }
+      });
       return;
     }
     this.router.navigate(['/dashboard', username.value]);

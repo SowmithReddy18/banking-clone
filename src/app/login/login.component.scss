@@ -1,0 +1,25 @@
+.bg-orange{
+    background: #F27B1A;
+    color: white;;
+}
+
+.bg-login{
+    background-image: url('../../assets/login-background.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.card {
+    border-top:3px solid #E68629;
+}
+
+.login-heading{
+    position: absolute;
+    top: 170px;
+    font-size: 40px;
+    left: 300px;
+}
+
+.form-control-sm {
+    border: 1px solid #cccc;
+}

@@ -1,19 +1,52 @@
-<div class="container">
-    <div class="card mt-4 float-right shadow" style="width: 350px;">
-        <div class="card-body">
-            <h5 class="card-title">Login to Internet Banking</h5>
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" #usrnm class="form-control shadow-sm" />
+<div class="bg-login">
+    <div class="container">
+        <div class="text-white login-heading">
+            <div class="font-weight-light">Login to</div>
+            <div class="font-weight-bold">Corporate Internet <br> Banking</div>
+        </div>
+        <div class="card mt-5 mr-4 p-2 float-right shadow-lg" style="width: 30%">
+            <div class="card-title" style="margin: 20px auto 0px;">
+                <img src="../../assets/icici-logo.jpg" alt="">
             </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" #psswd class="form-control shadow-sm" />
+            <div class="card-body">
+                <div class="form-group text-right">
+                    <input type="text" placeholder="Login ID" #usrnm class="form-control shadow-sm" />
+                    <small class="text-muted mt-1">Get login Id</small>
+                </div>
+                <div class="form-group mt-3 text-right">
+                    <input type="password" placeholder="Password" #psswd [ngClass]="{'is-invalid' : WrongPass}"
+                        class="form-control shadow-sm" />
+                    <div class="invalid-feedback" *ngIf="WrongPass">Invalid Password</div>
+                    <small class="text-muted mt-1">Forgot Password ?</small>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="useAccNum" (change)="0" #useaccnum>
+                    <small class="form-check-label" for="inlineCheckbox1">Use Account Number & Name</small>
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccnum.checked" >
+                    <input type="text" placeholder="Account Number" [(ngModel)]="accnum" class="form-control-sm shadow-sm" />
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccnum.checked" >
+                    <input type="text" placeholder="Account Name" [(ngModel)]="accname" class="form-control-sm shadow-sm" />
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="useAccNum" (change)="0" #useaccbal>
+                    <small class="form-check-label" for="inlineCheckbox1">Enter Tax</small>
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccbal.checked" >
+                    <input type="text" placeholder="Ledger Balance" [(ngModel)]="ledger" class="form-control-sm shadow-sm" />
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccbal.checked" >
+                    <input type="text" placeholder="Available Balance" [(ngModel)]="available" class="form-control-sm shadow-sm" />
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccbal.checked" >
+                    <input type="text" placeholder="Resesrved for Cheques" [(ngModel)]="resesrved" class="form-control-sm shadow-sm" />
+                </div>
+                <div class="form-group mt-2" *ngIf="useaccbal.checked" >
+                    <input type="text" placeholder="Unclear Balance" [(ngModel)]="unclear" class="form-control-sm shadow-sm" />
+                </div>
+                <button class="btn btn-block bg-blue mt-3" (click)="login(usrnm, psswd)">PROCEED</button>
             </div>
-            <div *ngIf="WrongPass" class="text-danger mb-3">
-                Invalid password
-            </div>
-            <button class="btn bg-orange" (click)="login(usrnm, psswd)">Login</button>
         </div>
     </div>
 </div>

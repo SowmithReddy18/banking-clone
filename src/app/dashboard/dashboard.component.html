@@ -1,77 +1,125 @@
-<div class="container-fluid mt-3" style="padding: 0 200px;">
-    <div class="row">
-        <div class="col-3">
-            <div class="h5 row text-center">Welcome, {{Name}}</div>
-            <div class="avatar text-center row">
-                <img src="../../assets/avatar.png" width="125px" height="125px" alt="">
+<app-navigation [username]="Name"></app-navigation>
+<div class="row m-0 p-0">
+    <div class="col-2.75 pl-0 nav-text bg-blue" style="height: 100vh;">
+        <div class="p-3 bg-orange"><i class="fas fa-home mr-2"></i>HOME</div>
+        <div class="p-3"><i class="fas fa-layer-group mr-2"></i>ACCOUNTS</div>
+        <div class="p-3"><i class="fas fa-exchange-alt mr-2"></i>TRANSFERS & BILL PAY</div>
+        <div class="p-3"><i class="fas fa-cog mr-2"></i>SERVICE REQUESTS</div>
+        <div class="p-3"><i class="fas fa-rupee-sign mr-2"></i>TAX / EPFO / ESIC</div>
+        <div class="p-3"><i class="fas fa-cogs mr-2"></i>CMS</div>
+        <div class="p-3"><i class="fas fa-sync-alt mr-2"></i>TRADE</div>
+        <div class="p-3"><i class="fas fa-university mr-2"></i>TREASURY</div>
+        <div class="p-3"><i class="fas fa-umbrella mr-2"></i>INVEST & INSURE</div>
+        <div class="p-3"><i class="fas fa-gifts mr-2"></i>EXCLUSIVE OFFERINGS</div>
+        <div class="p-3"><i class="fas fa-link mr-2"></i>CONNECTED BANKING</div>
+    </div>
+    <div class="col bg-white-shade">
+        <div class="row mt-2">
+            <div class="col-3.9 dash-card p-3 ml-3 shadow">
+                <div class="card-title font-weight-bold">BALANCES AND CLEARING STATUS</div>
+                <small>As on 12 Aug 2020</small>
+                <div class="mini-card shadow-sm font-16">
+                    {{AccNum}} - {{accname}}
+                </div>
+                <div>
+                    <span>LEDGER BALANCE</span>
+                    <p class="text-success">INR {{ledger}} CR</p>
+                </div>
+                <div>
+                    <span>AVAILABLE BALANCE</span>
+                    <p class="text-success">INR {{available}} CR</p>
+                </div>
+                <div>
+                    <span>RESERVED FOR CHEQUES</span>
+                    <p class="text-green">INR {{resesrved}}</p>
+                </div>
+                <div>
+                    <span>UNCLEAR BALANCE</span>
+                    <p class="text-green">INR {{unclear}}</p>
+                </div>
             </div>
-            <div class="row">
-                <button class="btn bg-orange mt-2 btn-sm">Personal Details</button>
+            <div class="col-3.9 dash-card p-3 ml-3 shadow">
+                <div class="card-title font-weight-bold">ACCOUNT STATEMENT</div>
+                <div class="mini-card shadow-sm font-16">
+                    {{AccNum}} - {{accname}}
+                </div>
+                <ul class="list-group list-group-horizontal mb-3" style="font-size: 16px;">
+                    <li class="list-group-item">Yesterday</li>
+                    <li class="list-group-item">Today</li>
+                    <li class="list-group-item">Month till Date</li>
+                </ul>
+                <div style="width: 45%; display: inline-block;" class="mr-3">
+                    <input style="width: 95%;" class="mini-card shadow-sm font-16 p-2 mb-1" [value]="today"/>
+                    <small class="form-text text-muted" style="font-size: 10px;">* Enter date in the above format</small>
+                </div>
+                <div style="width: 45%; display: inline-block;">
+                    <input style="width: 95%;" class="mini-card shadow-sm font-16 p-2 mb-1" placeholder="mm/dd/yyyy"/>
+                    <small class="form-text text-muted" style="font-size: 10px;">* Enter date in the above format</small>
+                </div>
+                <select class="mini-card shadow-sm  font-16 p-2" style="width: 45%">
+                    <option value="">Download As</option>
+                </select>
+                <div>
+                    <button class="btn bg-blue mt-2 text-light">Download</button>
+                </div>
+                <span class="text-orange" style="text-decoration: underline; cursor: pointer;">CONSOLIDATED STATEMENT</span>
             </div>
-            <div class="row mt-3 mr-4">
-                <div class="card p-2 mt-1" style="width: 100%;">My View</div>
-                <div class="card p-2 mt-1" style="width: 100%;">Personal Details</div>
-                <div class="card p-2 mt-1" style="width: 100%;">Account Summary</div>
+            <div class="col-3.9 dash-card p-3 ml-3 shadow">
+                <div class="card-title font-weight-bold">ACTIONS & OFFERS</div>
+                <div class="offers-card shadow-sm font-weight-bold p-3" style="font-size: 16px;">
+                    Pending on Me (0)
+                    <button class="btn btn-sm bg-blue text-light ml-2 float-right mb-2" style="margin-top: -5px;">ACT NOW</button>
+                </div>
+                <div class="offers-card shadow-sm font-weight-bold p-3" style="font-size: 16px;">
+                    Pending on Others (0)
+                    <button class="btn btn-sm bg-blue text-light ml-2 float-right mb-2" style="margin-top: -5px;">CHECK NOW</button>
+                </div>
+                <div class="offers-card shadow-sm font-weight-bold p-3" style="font-size: 16px;">
+                    Rejected Transactions (0)
+                    <button class="btn btn-sm bg-blue text-light ml-2 float-right mb-2" style="margin-top: -5px;">VIEW ALL</button>
+                </div>
             </div>
         </div>
-        <div class="col-9">
-            <div class="row">
-                <h4 class="text-orange">View Account Summary</h4>
+        <ng-container *ngIf="IsBalanceAvailable">
+            <div class="row bg-grey font-weight-bold p-2 pl-4 mt-2">
+                Total By Branch
             </div>
             <div class="row mt-2">
-                <div class="form">
-                    <label for="">I want to see my</label>
-                    <select name="" id="" class="ml-3" style="display: inline-block;">
-                        <option value="">Bank Account</option>
-                        <option value="">Deposit Account</option>
-                        <option value="">Loan Account</option>
-                    </select>
+                <div class="col p-0">
+                    <div class="text-center border p-2 bg-grey font-weight-bold">Total Assets</div>
+                    <div class="text-center border border-grey p-2"><span
+                            *ngIf="Balance.Asset && Balance.Asset != 'Loading'">&#x20B9; </span>{{Balance.Asset}}
+                    </div>
                 </div>
-                <div class="ml-3" style="margin-top: -5px;"><button class="btn btn-sm bg-orange"
-                        (click)="showBalance()">View
-                        Balance</button></div>
+                <div class="col p-0">
+                    <div class="text-center border p-2 bg-grey font-weight-bold">Total Liabilities</div>
+                    <div class="text-center border border-grey p-2"><span
+                            *ngIf="Balance.Liability && Balance.Liability != 'Loading'">&#x20B9;
+                        </span>{{Balance.Liability}}</div>
+                </div>
             </div>
-            <ng-container *ngIf="IsBalanceAvailable">
-                <div class="row bg-grey font-weight-bold p-2 pl-4 mt-2">
-                    Total By Branch
-                </div>
-                <div class="row mt-2">
-                    <div class="col p-0">
-                        <div class="text-center border p-2 bg-grey font-weight-bold">Total Assets</div>
-                        <div class="text-center border border-grey p-2"><span
-                                *ngIf="Balance.Asset && Balance.Asset != 'Loading'">&#x20B9; </span>{{Balance.Asset}}
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="text-center border p-2 bg-grey font-weight-bold">Total Liabilities</div>
-                        <div class="text-center border border-grey p-2"><span
-                                *ngIf="Balance.Liability && Balance.Liability != 'Loading'">&#x20B9;
-                            </span>{{Balance.Liability}}</div>
+            <div class="row mt-4">
+                <div class="col p-0">
+                    <div class="text-center border p-2 bg-grey font-weight-bold">Acc Number</div>
+                    <div class="text-center border border-grey p-2">
+                        {{Balance.Asset}}
                     </div>
                 </div>
-                <div class="row mt-4">
-                    <div class="col p-0">
-                        <div class="text-center border p-2 bg-grey font-weight-bold">Acc Number</div>
-                        <div class="text-center border border-grey p-2">
-                            {{Balance.Asset}}
-                        </div>
-                    </div>
-                    <div class="col-8 p-0">
-                        <div class="text-center border p-2 bg-grey font-weight-bold">Branch Address</div>
-                        <div class="text-center border border-grey p-2">
-                            <div class="30">
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div class="text-center border p-2 bg-grey font-weight-bold">IFSC Code</div>
-                        <div class="text-center border border-grey p-2">
-                            ICIC0003227
+                <div class="col-8 p-0">
+                    <div class="text-center border p-2 bg-grey font-weight-bold">Branch Address</div>
+                    <div class="text-center border border-grey p-2">
+                        <div class="30">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                         </div>
                     </div>
                 </div>
-            </ng-container>
-        </div>
+                <div class="col p-0">
+                    <div class="text-center border p-2 bg-grey font-weight-bold">IFSC Code</div>
+                    <div class="text-center border border-grey p-2">
+                        ICIC0003227
+                    </div>
+                </div>
+            </div>
+        </ng-container>
     </div>
 </div>
