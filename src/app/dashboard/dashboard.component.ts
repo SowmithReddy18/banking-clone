@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   resesrved;
   unclear;
   today;
+  date;
 
   constructor(private _activatedRoute: ActivatedRoute) { }
 
@@ -27,11 +28,14 @@ export class DashboardComponent implements OnInit {
     this.AccNum = this._activatedRoute.snapshot.queryParams['accNum'] || '018305008865';
     this.accname = this._activatedRoute.snapshot.queryParams['accname'] || 'RRMAININGAGENCY PR';
     this.accname = this.accname.toUpperCase();
-    this.ledger = this._activatedRoute.snapshot.queryParams['ledger'] || Math.floor(Math.random()*100000).toString() + '.00';
-    this.available = this._activatedRoute.snapshot.queryParams['available'] || Math.floor(Math.random()*100000).toString() + '.00';
+    this.ledger = this._activatedRoute.snapshot.queryParams['ledger'] || Math.floor(Math.random() * 100000).toString() + '.00';
+    this.available = this._activatedRoute.snapshot.queryParams['available'] || Math.floor(Math.random() * 100000).toString() + '.00';
     this.resesrved = this._activatedRoute.snapshot.queryParams['resesrved'] || '0.00';
     this.unclear = this._activatedRoute.snapshot.queryParams['unclear'] || '0.00';
     this.today = new Date().toLocaleString().split(',')[0];
+    var tempDate = new Date();
+    var tempdate = tempDate.toDateString().split(' ').slice(1, 3).reverse().join(' ');
+    this.date = tempdate + ' ' + tempDate.getFullYear()
   }
 
   showBalance() {

@@ -17,7 +17,7 @@
         <div class="row mt-2">
             <div class="col-3.9 dash-card p-3 ml-3 shadow">
                 <div class="card-title font-weight-bold">BALANCES AND CLEARING STATUS</div>
-                <small>As on 12 Aug 2020</small>
+                <small>As on {{date}}</small>
                 <div class="mini-card shadow-sm font-16">
                     {{AccNum}} - {{accname}}
                 </div>
@@ -56,8 +56,10 @@
                     <input style="width: 95%;" class="mini-card shadow-sm font-16 p-2 mb-1" placeholder="mm/dd/yyyy"/>
                     <small class="form-text text-muted" style="font-size: 10px;">* Enter date in the above format</small>
                 </div>
-                <select class="mini-card shadow-sm  font-16 p-2" style="width: 45%">
+                <select class="mini-card shadow-sm  font-16 p-2" style="width: 45%" >
                     <option value="">Download As</option>
+                    <option value="">PDF</option>
+                    <option value="">Excel</option>
                 </select>
                 <div>
                     <button class="btn bg-blue mt-2 text-light">Download</button>
